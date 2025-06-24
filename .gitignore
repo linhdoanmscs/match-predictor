@@ -8,3 +8,4 @@ integration-tests/cypress/screenshots
 integration-tests/cypress/videos
 integration-tests/cypress/log
 *.pyc
+.DS_Store
