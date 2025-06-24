@@ -1,15 +1,16 @@
 import random
+from typing import List, Dict
 
 from matchpredictor.predictors.predictor import Predictor, Prediction
-from matchpredictor.matchresults.result import Fixture, Outcome
+from matchpredictor.matchresults.result import Fixture, Outcome, Result
 
 
 class AdvancedPredictor(Predictor):
-    def __init__(self, training_data):
+    def __init__(self, training_data: List[Result]):
         self.training_data = training_data
         self.team_strengths = self.calculate_team_strengths(training_data)
 
-    def calculate_team_strengths(self, training_data):
+    def calculate_team_strengths(self, training_data: List[Result]) -> Dict[str, int]:
         strengths = {}
         for result in training_data:
             if result.fixture.home_team.name not in strengths:

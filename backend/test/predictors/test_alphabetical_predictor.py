@@ -29,7 +29,7 @@ class TestAlphabeticalPredictor(TestCase):
             Outcome.HOME
         ]
         for match, result in zip(matches, results):
-            if self.predictor.predict(match) == result:
+            if self.predictor.predict(match).outcome == result:
                 correct_predictions += 1
         accuracy = correct_predictions / len(matches)
         self.assertGreaterEqual(accuracy, 0.33)

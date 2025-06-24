@@ -1,6 +1,7 @@
 import sys
 import os
 from unittest import TestCase
+import unittest
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
 
@@ -9,7 +10,7 @@ from matchpredictor.predictors.advanced_predictor import AdvancedPredictor
 
 
 class TestAdvancedPredictor(TestCase):
-    def setUp(self):
+    def setUp(self) -> None:
         training_data = [
             Result(fixture=Fixture(home_team=Team('Team A'), away_team=Team('Team B'), league='some league'),
                    outcome=Outcome.HOME, home_goals=2, away_goals=1, season=2020),
@@ -20,12 +21,12 @@ class TestAdvancedPredictor(TestCase):
         ]
         self.predictor = AdvancedPredictor(training_data)
 
-    def test_predict(self):
+    def test_predict(self) -> None:
         fixture = Fixture(home_team=Team('Team A'), away_team=Team('Team B'), league='some league')
         prediction = self.predictor.predict(fixture)
         self.assertIn(prediction.outcome, [Outcome.HOME, Outcome.AWAY, Outcome.DRAW])
 
-    def test_accuracy(self):
+    def test_accuracy(self) -> None:
         matches = [
             Fixture(home_team=Team('Team A'), away_team=Team('Team B'), league='some league'),
             Fixture(home_team=Team('Team C'), away_team=Team('Team A'), league='some league'),
