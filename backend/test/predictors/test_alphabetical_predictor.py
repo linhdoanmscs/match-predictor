@@ -10,11 +10,11 @@ class TestAlphabeticalPredictor(TestCase):
     def test_predict(self) -> None:
         fixture = Fixture(home_team=Team('Alpha'), away_team=Team('Beta'), league='some league')
         prediction = self.predictor.predict(fixture)
-        self.assertEqual(Outcome.HOME, prediction)
+        self.assertEqual(Outcome.HOME, prediction.outcome)
 
         fixture = Fixture(home_team=Team('Beta'), away_team=Team('Alpha'), league='some league')
         prediction = self.predictor.predict(fixture)
-        self.assertEqual(Outcome.AWAY, prediction)
+        self.assertEqual(Outcome.AWAY, prediction.outcome)
 
     def test_accuracy(self) -> None:
         matches = [
